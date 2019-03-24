@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Iniciar Sesion</title>
+
+  <!-- Animation library for notifications   -->
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.min.css') }}">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/pe-icon-7-stroke.css') }}">
+
+  <!-- Custom fonts for this template-->
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}">
+
+  <!-- Custom styles for this template-->
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sb-admin.css') }}">
+
+</head>
+
+<body class="bg-dark">
+
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">Login</div>
+      <div class="card-body">
+        <form action="/login" method="POST">
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus" name="email">
+              <label for="inputEmail">Email</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required" name="password">
+              <label for="inputPassword">Contraseña</label>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Iniciar Sesion</button>
+        </form>
+        <div class="text-center">
+          <a class="d-block small mt-3" href="/register">Registrarse</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+
+  <!-- Bootstrap core JavaScript-->
+
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+
+
+  <!-- Core plugin JavaScript-->
+
+  <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+
+  <!--  Charts Plugin -->
+
+  <script src="{{ url_for('static', filename='assets/js/chartist.min.js') }}"></script>
+
+  <!--  Notifications Plugin    -->
+
+  <script src="{{ url_for('static', filename='assets/js/bootstrap-notify.js') }}"></script>>
+
+
+  <!--  Google Maps Plugin    -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+  <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+
+  <script src="{{ url_for('static', filename='assets/js/light-bootstrap-dashboard.js') }}"></script>
+
+  <script src="{{ url_for('static', filename='assets/js/demo.js') }}"></script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <!-- Mensajes  -->
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  {% if message == "Usuario creado satisfactoriamente" %}
+
+          <script type="text/javascript">
+
+              $(document).ready(function(){
+
+                  swal({
+                      title: "Listo!",
+                      text: "Usuario creado satisfactoriamente",
+                      icon: "success",
+                  });
+
+              });
+          </script>
+
+  {% else %}
+
+          <script type="text/javascript">
+            $(document).ready(function(){
+
+                demo.initChartist();
+
+                $.notify({
+                    icon: 'pe-7s-attention',
+                    message: "{{ message }}"
+
+
+                  },{
+                      type: 'danger',
+                      timer: 4000
+                  });
+
+            });
+          </script>
+
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+</body>
+
+</html>

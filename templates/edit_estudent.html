@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="{{ url_for('static', filename='assets/img/favicon.ico') }}">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Sistemas De Información</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+		<meta name="viewport" content="width=device-width" />
+
+
+		<!-- Bootstrap core CSS     -->
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+		<!-- Animation library for notifications   -->
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.min.css') }}">
+
+		<!--  Light Bootstrap Table core CSS    -->
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/light-bootstrap-dashboard.css') }}">
+
+		<!--     Fonts and icons     -->
+		<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/pe-icon-7-stroke.css') }}">
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="blue" data-image="{{ url_for('static', filename='assets/img/sidebar-5.jpg') }}">
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a class="simple-text">
+                    SISTEMAS DE INFORMACI&Oacute;N
+                </a>
+            </div>
+
+            <ul class="nav">
+                  <li>
+                      <a href="/home">
+                          <i class="pe-7s-home"></i>
+                          <p>Inicio</p>
+                      </a>
+                  </li>
+									<li>
+                      <a href="/notas">
+                          <i class="pe-7s-note2"></i>
+                          <p>Notas</p>
+                      </a>
+                  </li>
+                  <li class="active">
+                      <a href="/estudiantes">
+                          <i class="pe-7s-users"></i>
+                          <p>Estudiantes</p>
+                      </a>
+                  </li>
+
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+										<p class="navbar-brand">Estudiantes</p>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+											<li class="dropdown">
+														<a href="" data-toggle = "dropdown">
+															<i class="fa fa-user"></i> {{user.1}}
+														</a>
+														<ul class="dropdown-menu">
+															<li>
+																<a>Cédula: {{user.0}} </a>
+															</li>
+															<li><a>Email: {{user.2}} </a></li>
+														</ul>
+											</li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+												<li class="dropdown">
+                              <a href="/logout" class="dropdown-toggle">
+																		Cerrar Sesión
+                              </a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                        <div class="col-md-8"M>
+                          <div class="card">
+                              <div class="header">
+                                  <h4 class="title">Editar Estudiante</h4>
+                              </div>
+                              <div class="content">
+                                  <form action="/update/{{estudiante.0}}" method="POST">
+                                      <div class="row">
+                                          <div class="col-md-2">
+                                              <div class="form-group">
+                                                  <label>Cedula</label>
+                                                  <input type="number" name="id" disabled class="form-control" value={{estudiante.0}}>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-3">
+                                              <div class="form-group">
+                                                  <label>Nombre</label>
+                                                  <input type="text" name="nombre" class="form-control" value="{{estudiante.1}}">
+                                              </div>
+                                          </div>
+                                          <div class="col-md-2">
+                                              <div class="form-group">
+                                                  <label>Telefono</label>
+                                                  <input type="text" name="telef" class="form-control" value={{estudiante.4}}>
+                                              </div>
+                                          </div>
+                                          <div class="col-md-3">
+                                              <div class="form-group">
+                                                  <label for="exampleInputEmail1">Email</label>
+                                                  <input type="email" name="email" class="form-control" value={{estudiante.3}}>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <button id="guardar" class="btn btn-info btn-fill pull-right">Guardar</button>
+                                      <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+
+
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                  <p class="copyright pull-right">
+                      &copy; <script>document.write(new Date().getFullYear())</script> Luis Romero - Estefano Ramos
+                  </p>
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+<!-- SCRIPTS -->
+
+<!--   Core JS Files   -->
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.3.2.1.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+
+<!--  Charts Plugin -->
+<script src="{{ url_for('static', filename='assets/js/chartist.min.js') }}"></script>>
+
+<script src="{{ url_for('static', filename='assets/js/bootstrap-notify.js') }}"></script>>
+
+<script src="{{ url_for('static', filename='assets/js/light-bootstrap-dashboard.js') }}"></script>
+
+<script src="{{ url_for('static', filename='assets/js/demo.js') }}"></script>
+
+<!-- SweetAlert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-- Mensajes -->
+
+<script type="text/javascript">
+
+	$('#guardar').click(function(){
+		swal({
+				title: "Listo!",
+				text: "Datos actualizados",
+				icon: "success",
+				button: false,
+		});
+
+	});
+
+</script>
+
+
+
+
+</html>

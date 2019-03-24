@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="{{ url_for('static', filename='assets/img/favicon.ico') }}">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Sistemas De información</title>
+
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+		<!-- CSS -->
+
+    <!-- Bootstrap core CSS     -->
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}">
+
+    <!-- Animation library for notifications   -->
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/animate.min.css') }}">
+
+    <!--  Light Bootstrap Table core CSS    -->
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/light-bootstrap-dashboard.css') }}">
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/pe-icon-7-stroke.css') }}">
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="blue" data-image="{{ url_for('static', filename='assets/img/sidebar-5.jpg') }}">
+
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a class="simple-text">
+                    SISTEMAS DE INFORMACI&Oacute;N
+                </a>
+            </div>
+
+						<ul class="nav">
+                  <li class="active">
+                      <a href="/home">
+                          <i class="pe-7s-home"></i>
+                          <p>Inicio</p>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="/notas">
+                          <i class="pe-7s-note2"></i>
+                          <p>Notas</p>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="/estudiantes">
+                          <i class="pe-7s-users"></i>
+                          <p>Estudiantes</p>
+                      </a>
+                  </li>
+
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+										<p class="navbar-brand">Inicio</p>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+											<li class="dropdown">
+														<a href="" data-toggle = "dropdown">
+															<i class="fa fa-user"></i> {{user.1}}
+														</a>
+														<ul class="dropdown-menu">
+															<li>
+																<a>Cédula: {{user.0}} </a>
+															</li>
+															<li><a>Email: {{user.2}} </a></li>
+														</ul>
+											</li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+												<li class="dropdown">
+                              <a href="/logout" class="dropdown-toggle">
+																		Cerrar Sesión
+                              </a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+
+
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+									<p class="copyright pull-right">
+											&copy; <script>document.write(new Date().getFullYear())</script> Luis Romero - Estefano Ramos
+									</p>
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+<!-- SCRIPTS -->
+
+<!--   Core JS Files   -->
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/jquery.3.2.1.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+
+<!--  Charts Plugin -->
+<script src="{{ url_for('static', filename='assets/js/chartist.min.js') }}"></script>>
+
+<script src="{{ url_for('static', filename='assets/js/bootstrap-notify.js') }}"></script>>
+
+<script src="{{ url_for('static', filename='assets/js/light-bootstrap-dashboard.js') }}"></script>
+
+<script src="{{ url_for('static', filename='assets/js/demo.js') }}"></script>
+
+<!-- Mensajes -->
+
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		{% for message in messages %}
+				<script type="text/javascript">
+					$(document).ready(function(){
+
+							demo.initChartist();
+
+							$.notify({
+									icon: 'pe-7s-user',
+									message: "{{ message }}"
+
+
+								},{
+										type: 'info',
+										timer: 4000
+								});
+
+					});
+				</script>
+		{% endfor %}
+		{% endif %}
+		{% endwith %}
+
+
+
+</html>
