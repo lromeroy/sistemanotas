@@ -1,0 +1,23 @@
+Luis Romero	26625100
+Estefano Ramos 26778542
+
+Para correr la pagina
+	python App.py 
+
+Host	
+	Localhost:5000
+
+Dependencias
+
+	python 
+	flask 
+	flask-mysql
+
+Para instalar las librerias
+
+	pip install flask flask-mysql
+	pip install --upgrade setuptools
+
+El eliminar y algunos mensajes estan hechos con SweetAlert
+los scripts de la herramienta estan importados por la variable global con el url 
+asi que hace falta tener internet para que estas funcionen

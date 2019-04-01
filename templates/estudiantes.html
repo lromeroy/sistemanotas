@@ -34,7 +34,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" data-image="{{ url_for('static', filename='assets/img/sidebar-5.jpg') }}">
+    <div class="sidebar" data-color="blue" data-image="{{ url_for('static', filename='assets/img/sidebar-4.jpg') }}">
 
     	<div class="sidebar-wrapper">
             <div class="logo">
@@ -56,8 +56,8 @@
                           <p>Notas</p>
                       </a>
                   </li>
-                  <li class="/active">
-                      <a href="estudiantes">
+                  <li class="active">
+                      <a href="/estudiantes">
                           <i class="pe-7s-users"></i>
                           <p>Estudiantes</p>
                       </a>
@@ -112,7 +112,7 @@
             <div class="container-fluid">
                 <div class="row">
                         <div class="col-md-8"M>
-                          <div class="card">
+                          <div class="card shadow">
                               <div class="header">
                                   <h4 class="title">Agregar Estudiante</h4>
                               </div>
@@ -152,8 +152,8 @@
                       </div>
 
 
-                <div class="col-md-8">
-                        <div class="card">
+                <div class="col-md-10">
+                        <div class="card shadow">
                             <div class="header">
                                 <h4 class="title">Estudiantes</h4>
                                 <p class="category">Inserte, modifique o elimine estudiantes de esta clase</p>
@@ -176,8 +176,8 @@
 																							<td>{{ estudiante.3 }}</td>
 																							<td>{{ estudiante.2 }}</td>
 																							<td>
-																								<a href="/edit/{{estudiante.0}}" class="btn btn-info btn-fill pe-7s-note"></a>
-																								<button id="delete{{estudiante.0}}" class="btn btn-fill pe-7s-close"></button>
+																								<a href="/edit/{{estudiante.0}}" class="btn btn-info btn-fill">Editar</a>
+																								<button id="delete{{estudiante.0}}" class="btn btn-fill">Eliminar</button>
 																							</td>
 																					</tr>
 																				{% endfor %}
@@ -191,10 +191,7 @@
                 </div>
             </div>
         </div>
-
-
-
-        <footer class="footer">
+				<footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
                     <ul>
@@ -209,9 +206,10 @@
                 </p>
             </div>
         </footer>
-
     </div>
 </div>
+
+
 
 
 </body>
@@ -236,7 +234,9 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-<!-- Mensajes -->
+
+
+<!-- Mensajes  -->
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for message in messages %}
